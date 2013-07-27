@@ -3,7 +3,6 @@ var request = require('request');
 var URL = 'https://api.github.com/users/{id}/starred';
 
 var call = function(username, cb) {
-	// for test we'll use mock file.
 	// var requestUrl = URL.replace('{id}', username);
 	// request(requestUrl, function(err, res, body) {
 	// 	if (err) return cb(err);
@@ -19,6 +18,7 @@ var parseBody = function(body, cb) {
 	var items = []; 
 	json.forEach(function(el, idx) {
 		item = {};
+		item.id   = el.id;
 		item.name = el.name;
 		item.url  = el.html_url;
 		item.desc = el.description;
@@ -27,8 +27,8 @@ var parseBody = function(body, cb) {
 	cb(null, items);
 };
 
-var repos = function(cb) {
+var getRepos = function(cb) {
 	call('chitacan', cb);
 };
 
-module.exports.repos = repos;
+module.exports.getRepos = getRepos;
