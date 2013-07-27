@@ -1,7 +1,17 @@
 var List = require('term-list')
-  , list = new List({ marker: '\033[36m> \033[0m', markerLength: 2})
+  , list = new List({ marker: '\033[33m> \033[0m', markerLength: 2})
 	, exec = require('child_process').exec
-	, repos = {};
+	, repos  = {}
+  , config = require('config.js');
+
+if (!confit) return;
+
+var size = process.stdout.getWindowSize();
+
+// add 3 blank line to bottom(tmux status line etc..)
+var pageHeight = size[1] - 3;
+
+console.log(size);
 
 // show help
 
@@ -10,6 +20,9 @@ list.on('keypress', function(key, item) {
 	if (typeof key === 'undefined') return;
 
 	switch (key.name) {
+		case 'r':
+			// refresh
+			break;
 		case 'j':
 			list.down();
 			break;
@@ -19,7 +32,11 @@ list.on('keypress', function(key, item) {
 		case 'l':
 		case 'o':
 		case 'return':
-			console.log('item selected');
+			list.stop();
+			exec('open "' + repos[item].url +'"');
+			setTimeout(function() {
+				list.start();
+			}, 2000);
 			break;
 		case 'h':
 		case 'space':
@@ -35,11 +52,13 @@ list.on('keypress', function(key, item) {
 
 console.log('get your starred repos...');
 
-require('./starred.js').repos(function(err, items) {
+require('./starred.js').getRepos(function(err, items) {
 	if (err) return console.error(err);
 
 	items.forEach(function(el, idx) {
-		list.add(idx, el.name);
+		if (idx > pageHeight) return;
+		repos[el.id] = el;
+		list.add(el.id, el.name);
 	});
 	list.start();
 });
