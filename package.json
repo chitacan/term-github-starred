@@ -1,0 +1,21 @@
+{
+  "name": "term-github-starred",
+  "version": "0.0.1",
+  "description": "Browse your github starred repo in command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "terminal",
+    "github",
+    "starred"
+  ],
+  "author": "chitacan",
+  "license": "BSD",
+  "dependencies": {
+    "term-list": "~0.2.0",
+    "request": "~2.25.0"
+  }
+}
