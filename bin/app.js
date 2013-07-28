@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var List = require('term-list')
   , list = new List({ marker: '\033[33m> \033[0m', markerLength: 2})
 	, exec = require('child_process').exec
