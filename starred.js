@@ -8,7 +8,7 @@ var call = function(username, cb) {
 	// 	if (err) return cb(err);
 	// 	parseBody(body, cb);
 	// });
-	var testJson = require('fs').readFileSync('test.json');
+	var testJson = require('fs').readFileSync('cached.json');
 	parseBody(testJson, cb);
 };
 
