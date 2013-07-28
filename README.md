@@ -4,10 +4,15 @@ Browse your github starred repo on terminal.(inspired by [term-hackernews](https
 
 # install
 
-It's not yet published on `npm`. If you want to try, type following
+It's not yet published on `npm`. If you want to try,
+
+```
+git clone https://github.com/chitacan/term-github-starred.git
+cd term-github-starred
+npm link
+```
 
 ## todo
 
 * browse over 30 items
-* API request limit
-* show starred & fork count
+* show more repository info(starred & fork count)
