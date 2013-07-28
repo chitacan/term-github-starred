@@ -1,4 +1,7 @@
-var fs = require('fs')
-  , config = fs.readFileSync('config.json');
-
+var config;
+try {
+	config = require('fs').readFileSync('config.json');
+} catch (e) {
+	console.log(e);
+}
 module.exports = config;
