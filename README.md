@@ -2,6 +2,8 @@
 
 Browse your github starred repo on terminal.(inspired by [term-hackernews](https://github.com/gaarf/term-hackernews))
 
+![screenshot](https://raw.github.com/chitacan/term-github-starred/master/screenshot.png)
+
 # install
 
 Install [Node.js](http://nodejs.org/)
