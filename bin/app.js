@@ -32,4 +32,4 @@ function printHelp() {
 	process.exit(0);
 }
 
-// require('./../lib/index.js').init(opt);
+require('./../lib/index.js').init(opt);
