@@ -13,6 +13,19 @@ var size = process.stdout.getWindowSize();
 // add 3 blank line to bottom(tmux status line etc..)
 var pageHeight = size[1] - 3;
 
+console.log('get your starred repos...');
+list.on('keypress', handleKeypress);
+require('./starred.js').getRepos(function(err, items) {
+	if (err) return console.error(err);
+
+	items.forEach(function(el, idx) {
+		if (idx > pageHeight) return;
+		repos[el.id] = el;
+		list.add(el.id, el.name);
+	});
+	list.start();
+});
+
 // show help
 
 // handle keypress
@@ -49,16 +62,3 @@ function handleKeypress(key, item) {
 			break;
 	}
 }
-
-console.log('get your starred repos...');
-list.on('keypress', handleKeypress);
-require('./starred.js').getRepos(function(err, items) {
-	if (err) return console.error(err);
-
-	items.forEach(function(el, idx) {
-		if (idx > pageHeight) return;
-		repos[el.id] = el;
-		list.add(el.id, el.name);
-	});
-	list.start();
-});
