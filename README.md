@@ -8,7 +8,7 @@ Browse your github starred repo on terminal.(inspired by [term-hackernews](https
 
 Install [Node.js](http://nodejs.org/)
 
-It's not yet published on `npm`. If you want to try,
+It's not yet published on `npm`. If you want to try, type following
 
 ```
 git clone https://github.com/chitacan/term-github-starred.git
