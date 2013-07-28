@@ -2,21 +2,19 @@ var List = require('term-list')
   , list = new List({ marker: '\033[33m> \033[0m', markerLength: 2})
 	, exec = require('child_process').exec
 	, repos  = {}
-  , config = require('config.js');
+  , config = require('./config.js');
 
-if (!confit) return;
+if (!config) return;
 
 var size = process.stdout.getWindowSize();
 
 // add 3 blank line to bottom(tmux status line etc..)
 var pageHeight = size[1] - 3;
 
-console.log(size);
-
 // show help
 
 // handle keypress
-list.on('keypress', function(key, item) {
+function handleKeypress(key, item) {
 	if (typeof key === 'undefined') return;
 
 	switch (key.name) {
@@ -48,10 +46,10 @@ list.on('keypress', function(key, item) {
 			process.exit();
 			break;
 	}
-});
+}
 
 console.log('get your starred repos...');
-
+list.on('keypress', handleKeypress);
 require('./starred.js').getRepos(function(err, items) {
 	if (err) return console.error(err);
 
