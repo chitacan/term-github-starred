@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 
-var opt  = {};
+var opt;
 var args = process.argv.slice(2);
 
-if (!args.length) {
+try {
+	opt = JSON.parse(require('fs').readFileSync('config.json'));
+} catch(e) {
+	opt = {};
+}
+
+if (!opt.id && !args.length) {
 	console.log('(no user specified. `starred -h` for usage');
 	process.exit(1);
 }
@@ -16,6 +22,8 @@ while(args.length > 0) {
 			printHelp();
 			break;
 		default:
+			if (opt.id && opt.id !== arg)
+				opt.lastRequestTime = 0;
 			opt.id = arg;
 			break;
 	}
