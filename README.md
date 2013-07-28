@@ -4,6 +4,8 @@ Browse your github starred repo on terminal.(inspired by [term-hackernews](https
 
 # install
 
+Install [Node.js](http://nodejs.org/)
+
 It's not yet published on `npm`. If you want to try,
 
 ```
