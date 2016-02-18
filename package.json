@@ -1,10 +1,14 @@
 {
   "name": "term-github-starred",
   "version": "0.0.1",
-  "description": "Browse your github starred repo in command line",
-  "main": "./bin/app.js",
+  "description": "Browse your github starred repo in your terminal.",
+  "main": "bin/tgs",
+  "bin": {
+    "tgs": "bin/tgs"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "nodemon --watch lib --exec eslint lib/**"
   },
   "repository": "",
   "keywords": [
@@ -12,11 +16,22 @@
     "github",
     "starred"
   ],
+  "os": [
+    "darwin"
+  ],
   "author": "chitacan",
-  "license": "BSD",
+  "license": "MIT",
   "dependencies": {
-    "term-list": "~0.2.0",
-    "request": "~2.25.0"
+    "chalk": "^1.1.1",
+    "github": "^0.2.4",
+    "lodash": "^4.5.0",
+    "opn": "^4.0.0",
+    "rx": "^4.0.8",
+    "vorpal": "^1.9.2"
   },
-	"bin" : { "starred" : "./bin/app.js" }
+  "devDependencies": {
+    "eslint": "^2.2.0",
+    "eslint-config-google": "^0.4.0",
+    "nodemon": "^1.9.0"
+  }
 }
