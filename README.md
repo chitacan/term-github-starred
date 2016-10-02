@@ -11,7 +11,7 @@ Install [Node.js](http://nodejs.org/)
 It's not yet published on `npm`. If you want to try, type following
 
 ```
-$ git clone chitacan/term-github-starred
+$ git clone https://github.com/chitacan/term-github-starred.git
 $ cd term-github-starred
 $ npm link
 ```
